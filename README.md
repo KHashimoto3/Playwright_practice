@@ -1,0 +1,2 @@
+# Playwright_practice
+PlaywrightによるE2Eテストの練習用リポジトリ
