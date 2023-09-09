@@ -7,9 +7,13 @@ export const Counter = () => {
     <>
       <h1>カウンター</h1>
       <p>クリックしてカウントアップ</p>
-      <p>現在：{count}</p>
+      <p data-testid="count">現在：{count}</p>
 
-      <button type="button" onClick={() => setCount((count) => count + 1)}>
+      <button
+        type="button"
+        data-testid="count-up-button"
+        onClick={() => setCount((count) => count + 1)}
+      >
         count up!
       </button>
     </>
