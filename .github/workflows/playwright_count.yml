@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [main, master]
 jobs:
-  test:
+  playwright test:
     timeout-minutes: 60
     runs-on: ubuntu-20.04
     defaults:
@@ -21,9 +21,13 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run React app
-        run: npm run dev
+        run: npm run dev &
+        # アプリケーションが起動するのを待つ
+        background: true
+      - name: Wait for the application to start
+        run: npx wait-on http://localhost:5173
       - name: Run Playwright tests
-        run: npx playwright src/tests/countUp.spec.ts
+        run: npx playwright test src/tests/countUp.spec.ts
       - uses: actions/upload-artifact@v3
         if: always()
         with:
