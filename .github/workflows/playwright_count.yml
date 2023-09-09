@@ -20,12 +20,9 @@ jobs:
         run: npm ci
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
-      - name: Run React app
+      - name: Run React app & wait
         run: npm run dev &
           sleep 5
-        # アプリケーションが起動するのを待つ
-      - name: Wait for the application to start
-        run: npx wait-on http://localhost:5173
       - name: Run Playwright tests
         run: npx playwright test src/tests/countUp.spec.ts
       - uses: actions/upload-artifact@v3
