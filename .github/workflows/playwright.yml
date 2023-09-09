@@ -7,7 +7,10 @@ on:
 jobs:
   test:
     timeout-minutes: 60
-    runs-on: ubuntu-lates
+    runs-on: ubuntu-20.04
+    defaults:
+      run:
+        working-directory: practice_project
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
